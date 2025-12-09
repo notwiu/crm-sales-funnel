@@ -52,5 +52,14 @@
     "stage": "Prospect",
     "value": 12000,
     "createdAt": "2025-12-09T19:28:27.668499"
+  },
+  {
+    "id": 7,
+    "name": "test",
+    "company": "test",
+    "email": "test@gmail.com",
+    "stage": "Prospect",
+    "value": 356000,
+    "createdAt": "2025-12-09T19:41:54.048753"
   }
 ]
