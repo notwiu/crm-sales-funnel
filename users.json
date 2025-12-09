@@ -1,0 +1,12 @@
+{
+  "admin@crm.com": {
+    "password": "0192023a7bbd73250516f069df18b500",
+    "name": "Admin User",
+    "role": "admin"
+  },
+  "sales@crm.com": {
+    "password": "0ad80eb119d9bf7775aa23786b05b391",
+    "name": "Sales Rep",
+    "role": "sales"
+  }
+}

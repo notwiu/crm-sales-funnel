@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Acme Corp",
+    "company": "Acme Inc",
+    "email": "contact@acme.com",
+    "stage": "Prospect",
+    "value": 50000,
+    "createdAt": "2025-12-09T19:21:13.375377"
+  },
+  {
+    "id": 2,
+    "name": "Tech Solutions",
+    "company": "Tech LLC",
+    "email": "info@tech.com",
+    "stage": "Qualified",
+    "value": 75000,
+    "createdAt": "2025-12-09T19:21:13.375402"
+  },
+  {
+    "id": 3,
+    "name": "Global Industries",
+    "company": "Global Inc",
+    "email": "sales@global.com",
+    "stage": "Negotiation",
+    "value": 120000,
+    "createdAt": "2025-12-09T19:21:13.375404"
+  },
+  {
+    "id": 4,
+    "name": "Enterprise Solutions",
+    "company": "Enterprise Ltd",
+    "email": "contact@enterprise.com",
+    "stage": "Closed",
+    "value": 200000,
+    "createdAt": "2025-12-09T19:21:13.375405"
+  },
+  {
+    "id": 5,
+    "name": "22",
+    "company": "3333",
+    "email": "3333@gmail.com",
+    "stage": "Qualified",
+    "value": 22222,
+    "createdAt": "2025-12-09T19:28:04.445650"
+  },
+  {
+    "id": 6,
+    "name": "w232312",
+    "company": "21321312312323",
+    "email": "1wdawdawd@gmail.com",
+    "stage": "Prospect",
+    "value": 12000,
+    "createdAt": "2025-12-09T19:28:27.668499"
+  }
+]

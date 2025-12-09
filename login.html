@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProCRM - Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <h1>ProCRM</h1>
+                <p class="tagline">Professional Sales Funnel CRM</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="form-container active">
+                <h2>Sign In</h2>
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="admin@crm.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="admin123" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+                <p class="toggle-text">Don't have an account? <a href="#" class="toggle-form">Sign up</a></p>
+                <div id="loginError" class="error-message"></div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="form-container">
+                <h2>Create Account</h2>
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" placeholder="Min 6 characters" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+                <p class="toggle-text">Already have an account? <a href="#" class="toggle-form">Sign in</a></p>
+                <div id="signupError" class="error-message"></div>
+            </form>
+
+            <!-- Demo Accounts Info -->
+            <div class="demo-info">
+                <h3>📋 Demo Accounts</h3>
+                <div class="demo-account">
+                    <strong>Admin</strong>
+                    <p>Email: <code>admin@crm.com</code></p>
+                    <p>Password: <code>admin123</code></p>
+                </div>
+                <div class="demo-account">
+                    <strong>Sales Rep</strong>
+                    <p>Email: <code>sales@crm.com</code></p>
+                    <p>Password: <code>sales123</code></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Real-Time Dashboard</h3>
+                <p>Monitor KPIs, pipeline value, and conversion rates at a glance</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h3>Kanban Board</h3>
+                <p>Drag and drop leads across stages: Prospect, Qualified, Negotiation, Closed</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <h3>Contacts Management</h3>
+                <p>Organize and search your leads with advanced filtering</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <h3>Analytics & Reports</h3>
+                <p>Track funnel metrics and export data as CSV</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Initialize theme on login page
+        const ThemeManager = {
+            THEME_KEY: 'crm-theme',
+            
+            init() {
+                const savedTheme = localStorage.getItem(this.THEME_KEY);
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                this.setTheme(theme);
+            },
+            
+            setTheme(theme) {
+                const html = document.documentElement;
+                if (theme === 'dark') {
+                    html.setAttribute('data-theme', 'dark');
+                    localStorage.setItem(this.THEME_KEY, 'dark');
+                } else {
+                    html.removeAttribute('data-theme');
+                    localStorage.setItem(this.THEME_KEY, 'light');
+                }
+            }
+        };
+        
+        // Initialize theme when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            ThemeManager.init();
+        });
+    </script>
+</body>
+</html>

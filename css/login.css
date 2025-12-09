@@ -1,0 +1,435 @@
+/* ==================== Login Page Styles ==================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Light theme */
+    --primary-gradient: linear-gradient(135deg, #0066CC 0%, #66BB6A 100%);
+    --primary: #0066CC;
+    --secondary: #66BB6A;
+    --accent: #E53935;
+    --success: #66BB6A;
+    --text-dark: #212121;
+    --text-light: #666666;
+    --border: #E0E0E0;
+    --bg-light: #F5F5F5;
+    --bg-primary: #FFFFFF;
+    --input-bg: #F5F5F5;
+}
+
+/* Dark theme */
+html[data-theme="dark"] {
+    --text-dark: #E8E8E8;
+    --text-light: #A0A0A0;
+    --border: #3F3F5A;
+    --bg-light: #1E1E2E;
+    --bg-primary: #2C2C3E;
+    --input-bg: #1E1E2E;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    background: linear-gradient(135deg, #0066CC 0%, #66BB6A 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease;
+}
+
+html[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0D0D1A 0%, #1A1A2E 100%);
+}
+
+.login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1000px;
+    width: 100%;
+    align-items: center;
+}
+
+.login-box {
+    background: var(--bg-primary);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid var(--border);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.logo h1 {
+    font-size: 42px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo .tagline {
+    color: var(--text-light);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.form-container {
+    display: none;
+}
+
+.form-container.active {
+    display: block;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.form-container h2 {
+    font-size: 32px;
+    margin-bottom: 35px;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    background: var(--input-bg);
+    color: var(--text-dark);
+}
+
+.form-group input::placeholder {
+    color: var(--text-light);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--bg-primary);
+    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 10px 25px rgba(0, 102, 204, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 102, 204, 0.45);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.toggle-text {
+    text-align: center;
+    margin-top: 24px;
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.toggle-text a {
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.toggle-text a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    bottom: -3px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.toggle-text a:hover::after {
+    width: 100%;
+}
+
+.error-message {
+    margin-top: 15px;
+    padding: 14px 16px;
+    background: rgba(255, 107, 107, 0.1);
+    color: #c53030;
+    border-radius: 10px;
+    font-size: 14px;
+    display: none;
+    border-left: 4px solid #c53030;
+    font-weight: 500;
+    animation: slideInDown 0.4s ease-out;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.demo-info {
+    margin-top: 50px;
+    padding-top: 35px;
+    border-top: 2px solid var(--border);
+}
+
+.demo-info h3 {
+    font-size: 13px;
+    color: var(--primary);
+    margin-bottom: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.demo-account {
+    background: var(--input-bg);
+    padding: 16px 18px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.demo-account:hover {
+    background: var(--bg-light);
+    transform: translateX(4px);
+}
+
+.demo-account strong {
+    display: block;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.demo-account p {
+    color: var(--text-light);
+    margin: 4px 0;
+    font-weight: 500;
+}
+
+.demo-account code {
+    background: var(--bg-primary);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 12px;
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+.features-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.feature {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    color: white;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    font-size: 50px;
+    margin-bottom: 16px;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature:hover .feature-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.feature h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.feature p {
+    font-size: 14px;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .login-box {
+        padding: 40px 30px;
+    }
+
+    .features-section {
+        display: none;
+    }
+
+    .logo h1 {
+        font-size: 36px;
+    }
+
+    .form-container h2 {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .demo-info {
+        margin-top: 35px;
+        padding-top: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 30px 20px;
+    }
+
+    .logo h1 {
+        font-size: 28px;
+    }
+
+    .logo .tagline {
+        font-size: 13px;
+    }
+
+    .form-group input {
+        padding: 12px 14px;
+        font-size: 16px;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .demo-account {
+        padding: 12px 14px;
+    }
+
+    .demo-account code {
+        font-size: 11px;
+    }
+}

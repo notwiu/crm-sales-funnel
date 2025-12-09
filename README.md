@@ -1,7 +1,6 @@
-# crm-sales-funnel
 # ProCRM - Professional Sales Funnel CRM
 
-A powerful, professional Customer Relationship Management (CRM) system with Sales Funnel management, built with modern technologies.
+A powerful, professional Customer Relationship Management (CRM) system with Sales Funnel management, built with modern technologies. Clean, modern CRM for managing leads and moving them through a sales funnel with a lightweight frontend and simple Flask backend.
 
 ## ✨ Features
 
@@ -68,84 +67,68 @@ A powerful, professional Customer Relationship Management (CRM) system with Sale
    ```
    Frontend runs on: `http://localhost:8080`
 
-## procrm - sales funnel crm
+4. **Open the application**
+   - Navigate to `http://localhost:8080/login.html`
+   - Use demo credentials (see below)
 
-clean, modern crm for managing leads and moving them through a sales funnel. this repo contains a lightweight frontend (html/css/js) and a simple flask backend for storing leads in a json file. it's designed to be easy to run locally and to publish to github or a small cloud vm.
+## 🔐 Demo Accounts
 
-features
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | `admin@crm.com` | `admin123` |
+| Sales | `sales@crm.com` | `sales123` |
 
-- simple dashboard with kpi cards and recent activity
-- kanban-style sales funnel with drag-and-drop
-- contacts table with search and quick actions
-- basic analytics and funnel breakdown
-- authentication (simple demo/local) and user profile
-- export leads to csv
-
-quick start (local)
-
-1. install dependencies
-
-```powershell
-python -m pip install -r requirements.txt
-```
-
-2. start the backend (runs on port 5001)
-
-```powershell
-python app.py
-```
-
-3. serve the frontend (runs on port 8081)
-
-```powershell
-python -m http.server 8081
-```
-
-open `http://localhost:8081/login.html` to sign in. demo accounts are available on the login page.
-
-deployment notes
-
-- backend can be deployed to heroku, pythonanywhere, or a small cloud vm. set the flask port to environment PORT if required.
-- frontend is static and works well with netlify, vercel, or github pages (for client-only hosting).
-
-demo accounts
-
-- admin: admin@crm.com / admin123
-- sales: sales@crm.com / sales123
-
-project structure
+## 📁 Project Structure
 
 ```
 crm-sales-funnel/
-├─ index.html          # main crm ui (requires login)
-├─ login.html          # login and signup page
-├─ app.py              # flask backend (leads stored in leads.json)
+├─ index.html          # Main CRM UI (requires login)
+├─ login.html          # Login and signup page
+├─ app.py              # Flask backend (leads stored in leads.json)
 ├─ js/
-│  ├─ app.js           # frontend app logic
-│  └─ auth.js          # auth helpers
+│  ├─ app.js           # Frontend app logic
+│  └─ auth.js          # Auth helpers
 ├─ css/
-│  ├─ style.css        # styles for the crm
-│  └─ login.css        # login page styles
-├─ requirements.txt
-├─ start.bat
-├─ start.sh
-└─ README.md
+│  ├─ style.css        # Styles for the CRM
+│  └─ login.css        # Login page styles
+├─ requirements.txt    # Python dependencies
+├─ start.bat           # Windows startup script
+├─ start.sh            # Unix startup script
+├─ leads.json          # Lead data storage
+└─ README.md           # This file
 ```
 
-notes
+## 🚀 Deployment
 
-- this is intended as a lean, local-first crm. leads are stored in `leads.json` and in localstorage for quick access. consider swapping to a proper database for production (postgres, mysql, mongodb).
-- authentication is intentionally simple for quick demo usage. replace with real auth (oauth, jwt, or session-based) before public deployment.
+### Backend
+- **Heroku**: Set the Flask port to environment `PORT` variable
+- **PythonAnywhere**: Simple Python web hosting
+- **Cloud VMs**: DigitalOcean, AWS, Azure (set `PORT` env variable)
 
-contributing
+### Frontend
+- **Netlify**: Drag & drop static files
+- **Vercel**: Perfect for static hosting
+- **GitHub Pages**: Client-only hosting (static files)
 
-feel free to open an issue, or submit a pull request. if you want help deploying to a platform (heroku, vercel, digitalocean), i can add deployment files and instructions.
+## 📝 Important Notes
 
-license
+- **Local-First Design**: Leads are stored in `leads.json` and LocalStorage for quick access
+- **For Production**: Consider upgrading to a proper database (PostgreSQL, MySQL, MongoDB)
+- **Security**: Authentication is intentionally simple for demo usage. Replace with proper auth (OAuth, JWT, or session-based) before public deployment
+- **Easy to Extend**: Clean codebase designed for easy customization and feature additions
 
-this project is provided as-is for learning and demonstration purposes.
+## 🤝 Contributing
 
-thank you
+We welcome contributions! Feel free to:
+- Open an issue for bug reports or feature requests
+- Submit a pull request with improvements
+- Ask for help with deployment to specific platforms (Heroku, Vercel, DigitalOcean, etc.)
 
-if you'd like, i can make a short linkedin-ready blurb for you to copy/paste when posting this project.
+## 📄 License
+
+This project is provided as-is for learning and demonstration purposes.
+
+## 🙏 Thank You
+
+Built with care for sales teams and CRM enthusiasts. If you find this helpful, please consider starring the repository!
 

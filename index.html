@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProCRM - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo-text">ProCRM</h1>
+            <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle dark/light mode">🌙</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link active" data-page="dashboard">
+                <span class="icon">📊</span>
+                <span class="text">Dashboard</span>
+            </a>
+            <a href="#" class="nav-link" data-page="kanban">
+                <span class="icon">🎯</span>
+                <span class="text">Sales Funnel</span>
+            </a>
+            <a href="#" class="nav-link" data-page="contacts">
+                <span class="icon">👥</span>
+                <span class="text">Contacts</span>
+            </a>
+            <a href="#" class="nav-link" data-page="analytics">
+                <span class="icon">📈</span>
+                <span class="text">Analytics</span>
+            </a>
+            <a href="#" class="nav-link" data-page="settings">
+                <span class="icon">⚙️</span>
+                <span class="text">Settings</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <h1 id="pageTitle">Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-profile">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name" id="userName">User</div>
+                        <div class="user-role" id="userRole">Sales Rep</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Pages Container -->
+        <div class="pages-container">
+            <!-- Dashboard Page -->
+            <div id="dashboard" class="page active">
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon">📊</div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Total Leads</div>
+                            <div class="kpi-value" id="totalLeads">0</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">💰</div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Pipeline Value</div>
+                            <div class="kpi-value" id="pipelineValue">$0</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">✅</div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Closed Deals</div>
+                            <div class="kpi-value" id="closedDeals">$0</div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">📈</div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Conversion Rate</div>
+                            <div class="kpi-value" id="conversionRate">0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Funnel Breakdown -->
+                    <div class="dashboard-card">
+                        <h2>Funnel Breakdown</h2>
+                        <div class="funnel-chart">
+                            <div class="funnel-stage">
+                                <div class="stage-name">Prospect</div>
+                                <div class="stage-bar" style="width: 100%;" id="funnelProspect">
+                                    <span id="funnelProspectCount">0</span>
+                                </div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="stage-name">Qualified</div>
+                                <div class="stage-bar qualified" id="funnelQualified">
+                                    <span id="funnelQualifiedCount">0</span>
+                                </div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="stage-name">Negotiation</div>
+                                <div class="stage-bar negotiation" id="funnelNegotiation">
+                                    <span id="funnelNegotiationCount">0</span>
+                                </div>
+                            </div>
+                            <div class="funnel-stage">
+                                <div class="stage-name">Closed</div>
+                                <div class="stage-bar closed" id="funnelClosed">
+                                    <span id="funnelClosedCount">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="dashboard-card">
+                        <h2>Recent Activity</h2>
+                        <div id="recentActivity" class="activity-list">
+                            <p class="empty-state">No recent activity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Funnel (Kanban) Page -->
+            <div id="kanban" class="page">
+                <div class="kanban-board">
+                    <div class="kanban-column" data-stage="Prospect">
+                        <div class="column-header">
+                            <h3>Prospect</h3>
+                            <span class="stage-count" id="countProspect">0</span>
+                        </div>
+                        <div class="kanban-cards" id="cardsProspect"></div>
+                        <button class="add-lead-btn" onclick="openAddLeadModal('Prospect')">+ Add Lead</button>
+                    </div>
+
+                    <div class="kanban-column" data-stage="Qualified">
+                        <div class="column-header">
+                            <h3>Qualified</h3>
+                            <span class="stage-count" id="countQualified">0</span>
+                        </div>
+                        <div class="kanban-cards" id="cardsQualified"></div>
+                        <button class="add-lead-btn" onclick="openAddLeadModal('Qualified')">+ Add Lead</button>
+                    </div>
+
+                    <div class="kanban-column" data-stage="Negotiation">
+                        <div class="column-header">
+                            <h3>Negotiation</h3>
+                            <span class="stage-count" id="countNegotiation">0</span>
+                        </div>
+                        <div class="kanban-cards" id="cardsNegotiation"></div>
+                        <button class="add-lead-btn" onclick="openAddLeadModal('Negotiation')">+ Add Lead</button>
+                    </div>
+
+                    <div class="kanban-column" data-stage="Closed">
+                        <div class="column-header">
+                            <h3>Closed</h3>
+                            <span class="stage-count" id="countClosed">0</span>
+                        </div>
+                        <div class="kanban-cards" id="cardsClosed"></div>
+                        <button class="add-lead-btn" onclick="openAddLeadModal('Closed')">+ Add Lead</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacts Page -->
+            <div id="contacts" class="page">
+                <div class="contacts-header">
+                    <input type="text" id="contactSearch" class="search-input" placeholder="Search by name, company, or email...">
+                    <button class="btn btn-primary" onclick="openAddLeadModal()">+ New Contact</button>
+                </div>
+                <table class="contacts-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Company</th>
+                            <th>Email</th>
+                            <th>Stage</th>
+                            <th>Value</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactsTableBody">
+                        <tr>
+                            <td colspan="6" class="empty-state">No contacts found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Analytics Page -->
+            <div id="analytics" class="page">
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Funnel Statistics</h3>
+                        <div id="funnelStats" class="stats-list"></div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Actions</h3>
+                        <button class="btn btn-primary" onclick="exportToCSV()">📥 Export to CSV</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings" class="page">
+                <div class="settings-section">
+                    <h2>Profile</h2>
+                    <div class="user-profile-settings">
+                        <p>Email: <strong id="settingsEmail">user@example.com</strong></p>
+                        <p>Name: <strong id="settingsName">User Name</strong></p>
+                        <p>Role: <strong id="settingsRole">Sales</strong></p>
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <h2>About</h2>
+                    <p>ProCRM v1.0 - Professional Sales Funnel CRM</p>
+                    <p>A lightweight CRM for managing leads and sales pipelines.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Lead Modal -->
+    <div id="leadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Lead</h2>
+                <button class="close-btn" onclick="closeAddLeadModal()">&times;</button>
+            </div>
+            <form id="leadForm" class="modal-form">
+                <div class="form-group">
+                    <label for="leadName">Name *</label>
+                    <input type="text" id="leadName" required>
+                </div>
+                <div class="form-group">
+                    <label for="leadCompany">Company *</label>
+                    <input type="text" id="leadCompany" required>
+                </div>
+                <div class="form-group">
+                    <label for="leadEmail">Email *</label>
+                    <input type="email" id="leadEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="leadStage">Stage *</label>
+                    <select id="leadStage" required>
+                        <option value="Prospect">Prospect</option>
+                        <option value="Qualified">Qualified</option>
+                        <option value="Negotiation">Negotiation</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="leadValue">Deal Value ($) *</label>
+                    <input type="number" id="leadValue" min="0" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeAddLeadModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Lead</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content modal-confirm">
+            <h2 id="confirmTitle">Confirm Action</h2>
+            <p id="confirmMessage">Are you sure?</p>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeConfirmModal()">Cancel</button>
+                <button class="btn btn-danger" id="confirmBtn" onclick="confirmAction()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
